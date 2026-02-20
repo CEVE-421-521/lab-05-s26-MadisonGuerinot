@@ -212,6 +212,8 @@ end
 The total cost first decreases, then increases as `a_frac` grows.
 What two forces create this U-shaped cost curve?
 Why is neither `a_frac = 0` nor `a_frac = 0.5` optimal?*
+
+When the dike is 0, there are no construction costs, but the damage is high. As the dike height increases, the expected damages decrease while construction costs increase. Eventually, the total cost of construction outweighs the prevented damage. 
 :::
 
 
@@ -395,10 +397,15 @@ end
 
 1. *How different are the optimal dike heights under RCP 8.5 vs. RCP 2.6?
    Are you surprised by how similar (or different) they are?*
+   The two heights are not very different. This is surprising because the different scenarios represent very different outcomes.
+
 2. *Our planning horizon is 50 years and our discount rate is 3%.
    How might each of these choices contribute to the similarity?
    (Hint: RCP 8.5 and 2.6 diverge most after 2060-2070, and a 3% discount rate means a dollar of damage 50 years from now is worth only about \$0.22 today.)*
+    A shorter planning horizon 50-years means that the full effects of SLR will not be seen yet. This explains why the optimal heights have not diverged yet. The discount rate reduces the costs of future damage, when we see the divergence in scenarios.
+
 3. *What changes to the problem setup — time horizon, discount rate, or something else — might make the two scenarios diverge more?*
+We could increase the time horizeon, and see the two scenarios diverge more. However, this may not be physically realistic given the lifespan of the dike. Similarly, we could reduce the discount rate if we are concerned we are undervaluing the future avoided damages.
 :::
 
 
@@ -508,7 +515,8 @@ If the star is off to one side, try increasing `max_iterations` (e.g., to 50 or 
 *Compare the ensemble-optimal dike height to the RCP 8.5 and RCP 2.6 single-scenario optima above.
 Where does it fall, and why?
 What does the ensemble approach implicitly assume about the likelihood of different SLR trajectories?*
-:::
+
+This approach gives approximately the same result as running the two scenarios. The ensemble approach is not giving weight to the different SLR trajectories, so it implicitly assumes they are equally likely. This is why the result is about the average of the two SLR scenarios run individually.
 
 
 ## Reflection
@@ -517,6 +525,8 @@ What does the ensemble approach implicitly assume about the likelihood of differ
 *We found that the "optimal" dike height depends on our assumptions about the future.
 If you were advising a city council, would you recommend optimizing for one scenario or an ensemble?
 What are the limitations of either approach, and why might we want something beyond optimization?*
+
+I would recommend optimizing for an ensemble of scenarios rather than a single scenario. We do not not which scenario is most likely, so it is best to consider a range of options (the ensemble) instead of picking a single one. The limitation of optimizing for a single scenario is that it may not be the most likely or representative of the future, and if we pick the wrong one, we could end up with a suboptimal decision. The limitation of optimizing for an ensemble is that it can be computationally expensive and is less easy to understand and convey to the public. We may care more about other factors, such as the community where the dike will be built and the factors that they care about. 
 :::
 
 
